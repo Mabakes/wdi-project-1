@@ -1,28 +1,43 @@
 $(() => {
-
   const $integers = [];
   const $answer = $('.answer');
   const $list = $('.number');
-  const $solution = $('.solution')
-  const $operator = $('.operator')
-
+  const $solution= $('.solution');
+  const $operator = $('.operator');
+  const $attempt1 = $('.attempt-num1');
+  const $attemptop = $('.attempt-op');
+  const $attempt2 = $('.attempt-num2');
+  const $bob = $('.bob');
+  const $start = $('.start-game');
   let count = 0;
+
+  // function (){
+  //   $start.on('click', startGame);
+  // }
 
   // Computer choses random number and assigns it to the html of the li numbers
   for (let i=0; i<$list.length; i++){
     if (i<$list.length/2){
-      $('#id-' + (i+1)).text(Math.ceil(Math.random() * 50));
-    }
-    else{
+      $('#id-' + (i+1)).text(Math.ceil(Math.random() * 10));
+    } else{
       $('#id-' + (i+1)).text(Math.ceil(Math.random() * 100)+50);
     }
   }
 
+
+  // Computer choses random number and assigns it to the html of the li numbers (now in the function)
+  // for (let i=0; i<$list.length; i++){
+  //   if (i<$list.length/2){
+  //     $('#id-' + (i+1)).text(Math.ceil(Math.random() * 10));
+  //   } else{
+  //     $('#id-' + (i+1)).text(Math.ceil(Math.random() * 100)+50);
+  //   }
+  // }
+
   // Computer choses random number between 1 and 8
   const num1 = Math.ceil(Math.random() * 7);
   const num2 = Math.ceil(Math.random() * 7);
-
-  // Gets the text from that html
+  // Gets the text from that html id:
   const chosenNum1 = $('#id-'+ num1).text();
   const chosenNum2 = $('#id-'+ num2).text();
 
@@ -30,6 +45,7 @@ $(() => {
   let chosenOp;
   let op = Math.ceil(Math.random() * 2);
   console.log(op);
+  // Assigns it to chose an operation
   if (op === 1){
     chosenOp = '+';
   }
@@ -37,26 +53,39 @@ $(() => {
     chosenOp = '-';
   }
 
+  // A player clicks on a list item
   $list.click(function(){
     count++;
+    // click is even
     if(count %2 !==0){
+      // get html from this
       const player1 = $(this).text();
+      $attempt1.html(player1+ ' ');
       console.log('player1 ' + player1);
     } else{
+      // click is odd - get html from this
       const player2 = $(this).text();
+      $attempt2.html(' '+player2+' =');
       console.log('player2 ' + player2);
     }
   });
 
   $operator.click(function(){
     const operator = $(this).text();
+    $attemptop.html(' '+operator+' ');
     console.log(operator);
-  })
+  });
+
+  $bob.text(eval(parseInt(player1)+ operator +parseInt(player2)));
 
   // giving the number to generate
-  $answer.text(eval(parseInt(chosenNum1)+ chosenOp + parseInt(chosenNum2)));
+  const solution = $answer.text(eval(parseInt(chosenNum1)+ chosenOp + parseInt(chosenNum2)));
+  console.log(solution);
+  console.log(eval(parseInt(player1)+ chosenOp +parseInt(player2)))
 
-
+  // if (eval(parseInt(player1) + operator + parseInt(player2)) === solution){
+  //   console.log('it works!');
+  // };
 
   // $solution.text(chosenNum1 + chosenOp + chosenNum2);
 
