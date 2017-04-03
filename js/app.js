@@ -6,15 +6,63 @@ $(() => {
 
   const $list = $('.number');
 
-// Computer choses random number and assigns it to the html of the li numbers
+  const $solution = $('.solution')
+
+  // Computer choses random number and assigns it to the html of the li numbers
   for (let i=0; i<$list.length; i++){
     if (i<$list.length/2){
-      $('#id-' + (i+1)).text(Math.ceil(Math.random() * 10));
+      $('#id-' + (i+1)).text(Math.ceil(Math.random() * 50));
     }
     else{
       $('#id-' + (i+1)).text(Math.ceil(Math.random() * 100)+50);
     }
   }
+
+  // Computer choses random number between 1 and 8
+  const num1 = Math.ceil(Math.random() * 7);
+  const num2 = Math.ceil(Math.random() * 7);
+
+  // Gets the text from that html
+  const chosenNum1 = $('#id-'+ num1).text();
+  const chosenNum2 = $('#id-'+ num2).text();
+
+  // Computer choses random number between 0 and 2
+  let chosenOp;
+  let op = Math.ceil(Math.random() * 2);
+  console.log(op);
+  if (op === 1){
+    chosenOp = '+'
+  }
+  else {
+    chosenOp = '-'
+  }
+
+  $list.click(function(){
+    if(i===0){
+    player1 = $(this).text()
+  }
+
+
+// does htis need to be in a loop?
+  // for (let i=0; i<2; i++){
+  //   $list.click(function(){
+  //     if(i===0){
+  //     player1 = $(this).text()
+  //   }
+  //   else{
+  //     player2 = $(this).text()
+  //   }
+  //     console.log(player1);
+  //     console.log(player2);
+  //   });
+  // };
+
+
+
+
+  $answer.text(eval(parseInt(chosenNum1)+ chosenOp + parseInt(chosenNum2)));
+
+  // $solution.text(chosenNum1 + chosenOp + chosenNum2);
 
   // const $number = setInterval(function number(){
   //   1 + Math.floor(Math.random() * 20); }, 10000)

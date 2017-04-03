@@ -1,29 +1,26 @@
-body{
+body {
   text-align: center;
   background-color: black;
   font-family: 'Macondo', cursive;
   color: white;
 }
 
-.grid{
-  margin: 0 auto;
-}
-
-h1{
+h1 {
   font-size: 40px;
 }
 
-p{
+p {
   font-size: 30px;
 }
 
 .grid {
   width: 1000px;
   height: 1000px;
+  margin: 0 auto;
   text-align: center;
 }
 
-ul{
+ul {
   float: left;
   margin: auto;
 }
