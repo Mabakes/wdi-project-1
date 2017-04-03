@@ -1,12 +1,12 @@
 $(() => {
 
   const $integers = [];
-
   const $answer = $('.answer');
-
   const $list = $('.number');
-
   const $solution = $('.solution')
+  const $operator = $('.operator')
+
+  let count = 0;
 
   // Computer choses random number and assigns it to the html of the li numbers
   for (let i=0; i<$list.length; i++){
@@ -31,36 +31,32 @@ $(() => {
   let op = Math.ceil(Math.random() * 2);
   console.log(op);
   if (op === 1){
-    chosenOp = '+'
+    chosenOp = '+';
   }
   else {
-    chosenOp = '-'
+    chosenOp = '-';
   }
 
   $list.click(function(){
-    if(i===0){
-    player1 = $(this).text()
-  }
+    count++;
+    if(count %2 !==0){
+      const player1 = $(this).text();
+      console.log('player1 ' + player1);
+    } else{
+      const player2 = $(this).text();
+      console.log('player2 ' + player2);
+    }
+  });
 
+  $operator.click(function(){
+    const operator = $(this).text();
+    console.log(operator);
+  })
 
-// does htis need to be in a loop?
-  // for (let i=0; i<2; i++){
-  //   $list.click(function(){
-  //     if(i===0){
-  //     player1 = $(this).text()
-  //   }
-  //   else{
-  //     player2 = $(this).text()
-  //   }
-  //     console.log(player1);
-  //     console.log(player2);
-  //   });
-  // };
-
-
-
-
+  // giving the number to generate
   $answer.text(eval(parseInt(chosenNum1)+ chosenOp + parseInt(chosenNum2)));
+
+
 
   // $solution.text(chosenNum1 + chosenOp + chosenNum2);
 
