@@ -1,3 +1,62 @@
 body{
-  background-color: pink;
+  text-align: center;
+  background-color: black;
+  font-family: 'Macondo', cursive;
+  color: white;
+}
+
+.grid{
+  margin: 0 auto;
+}
+
+h1{
+  font-size: 40px;
+}
+
+p{
+  font-size: 30px;
+}
+
+.grid {
+  width: 1000px;
+  height: 1000px;
+  text-align: center;
+}
+
+ul{
+  float: left;
+  margin: auto;
+}
+
+.number {
+  height: 100px;
+  width: 100px;
+  border: 2px solid #660066;
+  margin: 5px;
+  display: inline-block;
+  border-radius: 50px;
+  line-height: 100px;
+  font-size: 30px;
+  background: #660066; /* For browsers that do not support gradients */
+  background: -webkit-radial-gradient(#660066, #cc5200, black); /* Safari 5.1 to 6.0 */
+  background: -o-radial-gradient(#660066, #cc5200, black); /* For Opera 11.6 to 12.0 */
+  background: -moz-radial-gradient(#660066, #cc5200, black); /* For Firefox 3.6 to 15 */
+  background: radial-gradient(#660066, #cc5200, black); /* Standard syntax */
+}
+
+.operator {
+  height: 200px;
+  width: 200px;
+  border: 2px solid #660066;
+  display: inline-block;
+  margin: 5px;
+  border-radius: 100px;
+  line-height: 200px;
+  font-size: 100px;
+
+  background: #660066; /* For browsers that do not support gradients */
+  background: -webkit-radial-gradient(#660066, #cc5200, black); /* Safari 5.1 to 6.0 */
+  background: -o-radial-gradient(#660066, #cc5200, black); /* For Opera 11.6 to 12.0 */
+  background: -moz-radial-gradient(#660066, #cc5200, black); /* For Firefox 3.6 to 15 */
+  background: radial-gradient(#660066, #cc5200, black); /* Standard syntax */
 }
