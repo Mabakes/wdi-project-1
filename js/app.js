@@ -1,173 +1,171 @@
 $(() => {
-  const $integers = [];
-  const $answer = $('.answer');
-  const $list = $('.number');
-  const $solution= $('.solution');
-  const $operator = $('.operator');
-  const $attempt1 = $('.attempt-num1');
-  const $attemptop = $('.attempt-op');
-  const $attempt2 = $('.attempt-num2');
-  const $bob = $('.bob');
-  const $start = $('.start-game');
-  let count = 0;
 
-  // function (){
-  //   $start.on('click', startGame);
-  // }
+  var Game = Game || {};
+
+
+  Game.$integers = [];
+  Game.$answer = $('.answer');
+  Game.$list = $('.number');
+  Game.$solution = $('.solution');
+  Game.$operator = $('.operator');
+  Game.$attempt1 = $('.attempt-num1');
+  Game.$attemptop = $('.attempt-op');
+  Game.$attempt2 = $('.attempt-num2');
+  Game.$playerSolution = $('.playerSolution');
+  Game.count = 0;
+  Game.player1;
+  Game.player2;
 
   // Computer choses random number and assigns it to the html of the li numbers
-  for (let i=0; i<$list.length; i++){
-    if (i<$list.length/2){
+  for (let i=0; i<Game.$list.length; i++){
+    if (i<Game.$list.length/2){
       $('#id-' + (i+1)).text(Math.ceil(Math.random() * 10));
     } else{
       $('#id-' + (i+1)).text(Math.ceil(Math.random() * 100)+50);
     }
   }
 
-
-  // Computer choses random number and assigns it to the html of the li numbers (now in the function)
-  // for (let i=0; i<$list.length; i++){
-  //   if (i<$list.length/2){
-  //     $('#id-' + (i+1)).text(Math.ceil(Math.random() * 10));
-  //   } else{
-  //     $('#id-' + (i+1)).text(Math.ceil(Math.random() * 100)+50);
-  //   }
-  // }
-
   // Computer choses random number between 1 and 8
-  const num1 = Math.ceil(Math.random() * 7);
-  const num2 = Math.ceil(Math.random() * 7);
+  Game.num1 = Math.ceil(Math.random() * 7);
+  Game.num2 = Math.ceil(Math.random() * 7);
   // Gets the text from that html id:
-  const chosenNum1 = $('#id-'+ num1).text();
-  const chosenNum2 = $('#id-'+ num2).text();
+  Game.chosenNum1 = $('#id-'+ Game.num1).text();
+  Game.chosenNum2 = $('#id-'+ Game.num2).text();
 
   // Computer choses random number between 0 and 2
-  let chosenOp;
-  let op = Math.ceil(Math.random() * 2);
-  console.log(op);
+  Game.chosenOp;
+  Game.op = Math.ceil(Math.random() * 2);
+  console.log(Game.op);
   // Assigns it to chose an operation
-  if (op === 1){
-    chosenOp = '+';
-  }
-  else {
-    chosenOp = '-';
+  if (Game.op === 1){
+    Game.chosenOp = '+';
+  } else {
+    Game.chosenOp = '-';
   }
 
   // A player clicks on a list item
-  $list.click(function(){
-    count++;
+  Game.$list.click(function(){
+    Game.count++;
     // click is even
-    if(count %2 !==0){
+    if(Game.count %2 !==0){
       // get html from this
-      const player1 = $(this).text();
-      $attempt1.html(player1+ ' ');
-      console.log('player1 ' + player1);
+      Game.player1 = $(this).text();
+      Game.$attempt1.html(Game.player1+ ' ');
+      console.log('player1 ' + Game.player1);
     } else{
       // click is odd - get html from this
-      const player2 = $(this).text();
-      $attempt2.html(' '+player2+' =');
-      console.log('player2 ' + player2);
+      Game.player2 = $(this).text();
+      Game.$attempt2.html(' '+Game.player2+' =');
+      console.log('player2 ' + Game.player2);
+      Game.completeSolution = (eval(`${Game.player1}`+ `${Game.operator}` + `${Game.player2}`));
+      Game.$playerSolution.text(Game.completeSolution);
+      console.log(Game.$playerSolution);
     }
   });
 
-  $operator.click(function(){
-    const operator = $(this).text();
-    $attemptop.html(' '+operator+' ');
-    console.log(operator);
+  Game.$operator.click(function(){
+    Game.operator = $(this).text();
+    Game.$attemptop.html(' '+Game.operator+' ');
+    console.log(Game.operator);
   });
 
-  $bob.text(eval(parseInt(player1)+ operator +parseInt(player2)));
 
-  // giving the number to generate
-  const solution = $answer.text(eval(parseInt(chosenNum1)+ chosenOp + parseInt(chosenNum2)));
-  console.log(solution);
-  console.log(eval(parseInt(player1)+ chosenOp +parseInt(player2)))
+if (Game.completeSolution === )
+  // giving the number to genera
+// Game.$playerSolution.text()
 
-  // if (eval(parseInt(player1) + operator + parseInt(player2)) === solution){
-  //   console.log('it works!');
-  // };
+// Game.$playerSolution.text.eval(parseInt(Game.player1)+ operator +parseInt(Game.player2));
 
-  // $solution.text(chosenNum1 + chosenOp + chosenNum2);
+// )+ operator +parseInt(Game.player2)));
 
-  // const $number = setInterval(function number(){
-  //   1 + Math.floor(Math.random() * 20); }, 10000)
-  // }
-  //
-  // $answer.html($number);
-  //
-  // let $number;
-  // setInterval(function number() {
-  //   $number = 1 + Math.floor(Math.random() * 20);
-  //   $answer.html($number);
-  // }, 10000);
-  //
-  // function number() {a
-  //   $number = 1 + Math.floor(Math.random() * 20);
-  //   $answer.html($number);
-  // }
+// console.log(solution);
+// console.log(eval(parseInt(Game.player1)+ Game.chosenOp +parseInt(Game.player2)))
 
-  //every tile has an answer showing
-  //every tile is allocated a question when you click on the start tile, the question appears on the tile.
-  //a timer starts
-  //you click on an answer
-  //
-  //
-  //
-  //1. there are 6 tiles on the screen at any time
-  // Style board with HTML and CSS
+// if (eval(parseInt(Game.player1) + operator + parseInt(Game.player2)) === solution){
+//   console.log('it works!');
+// };
 
-  //2. there are 2 functions (+ and -)
-  // //3. the computer takes 2 numbers at random and an operation
-  // const $num1 = Math.round(Math.random());
-  // console.log($num1);
+// Game.$solution.text(Game.chosenNum1 + chosenOp + Game.chosenNum2);
 
-  //4. it randomly choses whether to reverse it or not
-  //5. the computer produces that as a target
-  //6. the player is asked to reach that target
-  //7. If the player choses the right answer, they go onto the next level
-  //8. SCOPE: The questions are timed and get harder
-  //9.
-  //10.
-  //
+// const $number = setInterval(function number(){
+//   1 + Math.floor(Math.random() * 20); }, 10000)
+// }
+//
+// Game.$answer.html($number);
+//
+// let $number;
+// setInterval(function number() {
+//   $number = 1 + Math.floor(Math.random() * 20);
+//   Game.$answer.html($number);
+// }, 10000);
+//
+// function number() {a
+//   $number = 1 + Math.floor(Math.random() * 20);
+//   Game.$answer.html($number);
+// }
 
-  // $answers = ['']
-  //
-  // const $tile = $('.tile');
-  // const $p = $('#id-p');
-  // const $a = $('#id-a');
-  // const $d = $('#id-d');
-  // var timeoutID = window.setTimeout(console.log('hi'), 5000);
-  //
-  // // A player clicks on an li
-  // $p.on('click', function(){
-  //   $p.text('4+3')
-  // });
-  //
-  // $a.on('click', function(){
-  //   $a.text('sqrt25')
-  //   $p.text('9900')
-  // });
-  //
-  // $d.on('click', function(){
-  //   $a.text('6')
-  //   $d.text('99*100')
-  // });
+//every tile has an answer showing
+//every tile is allocated a question when you click on the start tile, the question appears on the tile.
+//a timer starts
+//you click on an answer
+//
+//
+//
+//1. there are 6 tiles on the screen at any time
+// Style board with HTML and CSS
 
-  // function answer(){
-  // The question appears
-  // console.log('hi');
-  // $('li[id^='id']:last').append('<b>test</b>');
-  // // a timer starts
-  // var timeoutID = window.setTimeout(code, [delay]);
-  // }
+//2. there are 2 functions (+ and -)
+// //3. the computer takes 2 numbers at random and an operation
+// const $num1 = Math.round(Math.random());
+// console.log($num1);
+
+//4. it randomly choses whether to reverse it or not
+//5. the computer produces that as a target
+//6. the player is asked to reach that target
+//7. If the player choses the right answer, they go onto the next level
+//8. SCOPE: The questions are timed and get harder
+//9.
+//10.
+//
+
+// Game.$answers = ['']
+//
+// const $tile = $('.tile');
+// const $p = $('#id-p');
+// const $a = $('#id-a');
+// const $d = $('#id-d');
+// var timeoutID = window.setTimeout(console.log('hi'), 5000);
+//
+// // A player clicks on an li
+// $p.on('click', function(){
+//   $p.text('4+3')
+// });
+//
+// $a.on('click', function(){
+//   $a.text('sqrt25')
+//   $p.text('9900')
+// });
+//
+// $d.on('click', function(){
+//   $a.text('6')
+//   $d.text('99*100')
+// });
+
+// function answer(){
+// The question appears
+// console.log('hi');
+// $('li[id^='id']:last').append('<b>test</b>');
+// // a timer starts
+// var timeoutID = window.setTimeout(code, [delay]);
+// }
 
 
-  // The questions appears
-  // The timer starts
-  // The player clicks on the answer li
-  // The li turns into the question
+// The questions appears
+// The timer starts
+// The player clicks on the answer li
+// The li turns into the question
 
-});
+
 
 
 // ``let timeRemaining = 10;
