@@ -21,6 +21,18 @@ Game.init = function () {
 
 // Generate numbers for blocks
 Game.generateNumbers = function() {
+  Game.player1 = '';
+  Game.player2 = '';
+  Game.$attempt1.text('');
+  Game.$attempt2.text('');
+  Game.$attemptop.text('');
+  // Game.$answer.text('');
+  console.log('middle' + Game.player1);
+  Game.completeSolution = '';
+  Game.answer = '';
+  Game.operator = '';
+  Game.$playerSolution.text('');
+  Game.$list.off('click', Game.playerEquation);
   console.log('generateNumbers', Game.$list.length);
   for (let i = 0; i < Game.$list.length; i++){
     if (i < Game.$list.length/2){
@@ -92,21 +104,19 @@ Game.match = function(){
   if(Game.completeSolution === Game.answer){
     // clear Game.player1 and Game.player2
     console.log('before' + Game.player1);
+    // alert('Well done!');
+    Game.generateNumbers();
+  } else{
     Game.player1 = '';
     Game.player2 = '';
     Game.$attempt1.text('');
     Game.$attempt2.text('');
-    Game.$answer.text('');
-    console.log('middle' + Game.player1);
-
-    Game.generateNumbers();
-  } else{
-    // alert('try again!');
-    // Game.player1 = '';
-    // Game.player2 = '';
-    // Game.$attempt1.text('');
-    // Game.$attempt2.text('');
+    Game.$attemptop.empty();
     // Game.$answer.text('');
+    Game.completeSolution = '';
+    Game.answer = '';
+    Game.operator = '';
+    Game.$playerSolution.text('');
   }
 };
 
