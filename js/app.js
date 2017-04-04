@@ -91,14 +91,22 @@ Game.match = function(){
   console.log('match');
   if(Game.completeSolution === Game.answer){
     // clear Game.player1 and Game.player2
-    Game.player1 = null;
-    Game.player2 = null;
-    Game.$attempt1.html();
-    Game.$attempt2.html();
+    console.log('before' + Game.player1);
+    Game.player1 = '';
+    Game.player2 = '';
+    Game.$attempt1.text('');
+    Game.$attempt2.text('');
+    Game.$answer.text('');
+    console.log('middle' + Game.player1);
+
     Game.generateNumbers();
   } else{
-    console.log('try again');
-    // clear player1 and player2
+    // alert('try again!');
+    // Game.player1 = '';
+    // Game.player2 = '';
+    // Game.$attempt1.text('');
+    // Game.$attempt2.text('');
+    // Game.$answer.text('');
   }
 };
 
