@@ -17,10 +17,11 @@ Game.init = function () {
   Game.value           = $('.value');
   Game.scoreCount      = $('.score');
   Game.box             = $('.score_box_score');
+  Game.level           = $('.level');
   Game.count           = 0;
   Game.score           = 0;
-  Game.countdown       = 20;
-  Game.level           = 1;
+  Game.countdown       = 10;
+  Game.lev             = 1;
 
   // Start off by resetting the game
   Game.reset();
@@ -48,8 +49,12 @@ Game.reset = function() {
   Game.$attemptop.text('');
   Game.$playerSolution.text('');
   Game.$answer.text('');
+  Game.score           = 0;
+  Game.countdown       = 10;
+
   // Run again...
   Game.generateNumbers();
+  // Game.timer();
 };
 
 // Generate numbers for blocks
@@ -105,9 +110,16 @@ Game.timer = function(){
 
 
 Game.timerDone = function(){
-  Game.init();
+  Game.reset();
   Game.logScore = Game.scoreCount.text();
   Game.box.html(Game.logScore);
+
+  Game.levelUp();
+};
+
+Game.levelUp = function(){
+  Game.lev++;
+  Game.level.text(Game.lev);
 };
 
 Game.playerEquation = function(){
