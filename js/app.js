@@ -2,6 +2,7 @@ var Game = Game || {};
 
 // load constants
 Game.init = function () {
+  console.log('init');
   Game.$integers       = [];
   Game.$answer         = $('.answer');
   Game.$startButton    = $('.start-game');
@@ -13,7 +14,10 @@ Game.init = function () {
   Game.$attempt2       = $('.attempt-num2');
   Game.$playerSolution = $('.playerSolution');
   Game.count           = 0;
+  Game.score           = 0;
+  Game.countdown       = 21;
   Game.$eq             = $('.eq');
+  Game.value           = $('.value');
 
   // Start off by resetting the game
   Game.reset();
@@ -24,6 +28,7 @@ Game.init = function () {
 };
 
 Game.reset = function() {
+  console.log('reset');
   // Values
   Game.player1 = '';
   Game.player2 = '';
@@ -36,13 +41,13 @@ Game.reset = function() {
   Game.$attemptop.text('');
   Game.$playerSolution.text('');
   Game.$answer.text('');
-
   // Run again...
   Game.generateNumbers();
 };
 
 // Generate numbers for blocks
 Game.generateNumbers = function() {
+  console.log('generate');
   for (let i = 0; i < Game.$list.length; i++){
     if (i < Game.$list.length/2){
       $('#id-' + (i+1)).text(Math.ceil(Math.random() * 10));
@@ -50,11 +55,11 @@ Game.generateNumbers = function() {
       $('#id-' + (i+1)).text(Math.ceil(Math.random() * 100)+50);
     }
   }
-
   Game.generateTargetNumber();
 };
 
 Game.generateTargetNumber = function() {
+  console.log('target');
   // Computer choses random number between 1 and 8
   Game.num1 = Math.ceil(Math.random() * 7);
   Game.num2 = Math.ceil(Math.random() * 7);
@@ -74,12 +79,34 @@ Game.generateTargetNumber = function() {
 
   // Computer generates number
   Game.answer = eval(`${Game.chosenNum1} ${Game.chosenOp} ${Game.chosenNum2}`);
-
   // Assigns it to the HTML
   Game.$answer.html(Game.answer);
+
+  Game.clock = setInterval(Game.timer, 1000);
+};
+
+Game.timer = function(){
+  Game.countdown -= 1;
+  if(Game.countdown === 0){
+    clearInterval(Game.clock);
+    Game.levelUp();
+  }
+  Game.value.html(Game.countdown);
+};
+
+// Game.animate = function(){
+//   console.log('animate');
+//   Game.$list.addClass('pulse');
+// };
+
+Game.levelUp = function(){
+  alert('levelUp!');
+  Game.reset();
+  Game.generateNumbers();
 };
 
 Game.playerEquation = function(){
+  console.log('playerEquation');
   if ($(this).hasClass('number')) {
     if (Game.player1){
       Game.player2 = $(this).text();
@@ -95,6 +122,7 @@ Game.playerEquation = function(){
 };
 
 Game.playerSolution = function(){
+  console.log('solution');
   // Generates the players' number
   Game.completeSolution = (eval(`${Game.player1}`+ `${Game.operator}` + `${Game.player2}`));
   Game.$playerSolution.text(Game.completeSolution);
@@ -103,13 +131,27 @@ Game.playerSolution = function(){
 };
 
 Game.match = function(){
+  console.log('match');
   if (Game.completeSolution === Game.answer){
     // clear Game.player1 and Game.player2
     alert('Well done!');
+    Game.score();
   } else {
     alert('Naaaah!');
+    Game.reset();
   }
-  Game.reset();
+  // Game.reset();
+};
+
+Game.score = function(){
+  console.log('score');
+};
+
+Game.checkTotal = function(){
+  console.log('total');
+  if(Game.score === 5){
+    Game.reset();
+  }
 };
 
 $(Game.init.bind(Game));
