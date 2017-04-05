@@ -13,11 +13,13 @@ Game.init = function () {
   Game.$attemptop      = $('.attempt-op');
   Game.$attempt2       = $('.attempt-num2');
   Game.$playerSolution = $('.playerSolution');
-  Game.count           = 0;
-  Game.score           = 0;
-  Game.countdown       = 11;
   Game.$eq             = $('.eq');
   Game.value           = $('.value');
+  Game.scoreCount      = $('.score');
+  Game.count           = 0;
+  Game.score           = 0;
+  Game.countdown       = 100;
+  Game.level           = 1;
 
   // Start off by resetting the game
   Game.reset();
@@ -89,6 +91,7 @@ Game.timer = function(){
   Game.countdown -= 1;
   if(Game.countdown === 0){
     clearInterval(Game.clock);
+    Game.init();
   }
   Game.value.html(Game.countdown);
 };
@@ -122,7 +125,10 @@ Game.match = function(){
   console.log('match');
   if (Game.completeSolution === Game.answer){
     // clear Game.player1 and Game.player2
-    alert('Well done!');
+    // alert('Well done!');
+    Game.score++;
+    Game.scoreCount.html(Game.score);
+    console.log('Game.level');
     // Game.score();
   } else {
     alert('Naaaah!');
@@ -135,11 +141,11 @@ Game.match = function(){
 //   console.log('score');
 // };
 
-Game.checkTotal = function(){
-  console.log('total');
-  if(Game.score === 5){
-    Game.reset();
-  }
-};
+// Game.checkTotal = function(){
+//   console.log('total');
+//   if(Game.score === 5){
+//     Game.reset();
+//   }
+// };
 
 $(Game.init.bind(Game));
