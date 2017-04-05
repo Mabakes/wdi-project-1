@@ -15,7 +15,7 @@ Game.init = function () {
   Game.$playerSolution = $('.playerSolution');
   Game.count           = 0;
   Game.score           = 0;
-  Game.countdown       = 21;
+  Game.countdown       = 11;
   Game.$eq             = $('.eq');
   Game.value           = $('.value');
 
@@ -89,20 +89,8 @@ Game.timer = function(){
   Game.countdown -= 1;
   if(Game.countdown === 0){
     clearInterval(Game.clock);
-    Game.levelUp();
   }
   Game.value.html(Game.countdown);
-};
-
-// Game.animate = function(){
-//   console.log('animate');
-//   Game.$list.addClass('pulse');
-// };
-
-Game.levelUp = function(){
-  alert('levelUp!');
-  Game.reset();
-  Game.generateNumbers();
 };
 
 Game.playerEquation = function(){
@@ -135,17 +123,17 @@ Game.match = function(){
   if (Game.completeSolution === Game.answer){
     // clear Game.player1 and Game.player2
     alert('Well done!');
-    Game.score();
+    // Game.score();
   } else {
     alert('Naaaah!');
-    Game.reset();
+    // Game.reset();
   }
-  // Game.reset();
+  Game.reset();
 };
 
-Game.score = function(){
-  console.log('score');
-};
+// Game.score = function(){
+//   console.log('score');
+// };
 
 Game.checkTotal = function(){
   console.log('total');
