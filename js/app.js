@@ -16,19 +16,24 @@ Game.init = function () {
   Game.$eq             = $('.eq');
   Game.value           = $('.value');
   Game.scoreCount      = $('.score');
+  Game.box             = $('.score_box_score');
   Game.count           = 0;
   Game.score           = 0;
-  Game.countdown       = 100;
+  Game.countdown       = 20;
   Game.level           = 1;
 
   // Start off by resetting the game
   Game.reset();
+
+//
+  Game.clock = setInterval(Game.timer, 1000);
 
   // Setup eventListeners
   Game.$eq.on('click', Game.playerSolution);
   Game.$list.on('click', Game.playerEquation);
 };
 
+// Reset all the conditions
 Game.reset = function() {
   console.log('reset');
   // Values
@@ -60,6 +65,7 @@ Game.generateNumbers = function() {
   Game.generateTargetNumber();
 };
 
+// Computer generates random number
 Game.generateTargetNumber = function() {
   console.log('target');
   // Computer choses random number between 1 and 8
@@ -84,16 +90,24 @@ Game.generateTargetNumber = function() {
   // Assigns it to the HTML
   Game.$answer.html(Game.answer);
 
-  Game.clock = setInterval(Game.timer, 1000);
+  // Game.clock = setInterval(Game.timer, 1000);
 };
 
+// Count down timer
 Game.timer = function(){
   Game.countdown -= 1;
   if(Game.countdown === 0){
     clearInterval(Game.clock);
-    Game.init();
+    Game.timerDone();
   }
   Game.value.html(Game.countdown);
+};
+
+
+Game.timerDone = function(){
+  Game.init();
+  Game.logScore = Game.scoreCount.text();
+  Game.box.html(Game.logScore);
 };
 
 Game.playerEquation = function(){
@@ -136,16 +150,5 @@ Game.match = function(){
   }
   Game.reset();
 };
-
-// Game.score = function(){
-//   console.log('score');
-// };
-
-// Game.checkTotal = function(){
-//   console.log('total');
-//   if(Game.score === 5){
-//     Game.reset();
-//   }
-// };
 
 $(Game.init.bind(Game));

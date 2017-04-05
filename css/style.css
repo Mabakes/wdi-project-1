@@ -108,3 +108,21 @@ ul {
 .scoreboard p{
   font-size: 60px;
 }
+
+.total_score {
+  height: 300px;
+  width: 1500px;
+  clear: both;
+  background-color: #FFF6CE;
+  color: black;
+  border: 4px solid #660066;
+  margin: 50px;
+  text-align: center;
+}
+
+.level_box {
+  height: 200px;
+  width: 200px;
+  float: left;
+  text-align: center;
+}
