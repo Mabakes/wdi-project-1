@@ -34,12 +34,6 @@ h2 {
   font-size: 18px;
 }
 
-.shader {
-  background: red;
-  width: 100px;
-  height: 100px;
-}
-
 p {
   margin-top: 10px;
   font-size: 40px;
@@ -131,6 +125,8 @@ ul {
   font-family: 'Montserrat', sans-serif;
   font-size: 50px;
 }
+
+
 
   .time             { background: #378B2E; }
   .target           { background: #AA3939; }

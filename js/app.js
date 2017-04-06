@@ -115,6 +115,7 @@ Game.timer = function(){
   Game.value.html(Game.countdown);
 };
 
+// Timer at 0
 Game.timerDone = function(){
   console.log('done');
   Game.animation('.time', 'shake');
@@ -123,6 +124,7 @@ Game.timerDone = function(){
   Game.reset();
 };
 
+// Level goes up
 Game.levelUp = function(){
   Game.animation('.total_score', 'flash');
   Game.totalScore = Game.totalScore + Game.score;
@@ -135,6 +137,7 @@ Game.levelUp = function(){
   Game.clock = setInterval(Game.timer, 1000);
 };
 
+// Player choses number
 Game.playerEquation = function(){
   // No first number and hitting operator
   if (!Game.player1 && $(this).text().match(/[\/\+\-\*]/)) return;
@@ -156,6 +159,7 @@ Game.playerEquation = function(){
   }
 };
 
+// Player gets solution
 Game.playerSolution = function(){
   console.log('solution');
   // Generates the players' number
@@ -165,6 +169,7 @@ Game.playerSolution = function(){
   Game.match();
 };
 
+// If there's a match
 Game.match = function(){
   if (Game.completeSolution === Game.answer){
     console.log('match');
@@ -178,6 +183,7 @@ Game.match = function(){
   Game.reset();
 };
 
+// Animation function
 Game.animation = function(element, animation) {
   $(element).addClass(animation).one('webkitAnimationEnd', () => $(element).removeClass(animation));
 };
