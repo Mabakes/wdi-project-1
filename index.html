@@ -17,9 +17,8 @@
 <body>
   <header>
     <h1>BACKWARDS CALCULATOR</h1>
-    <h2>The aim of this game is to reach the target number on the right, from the numbers listed below.</h2>
-
-    <h2>But be careful, you're being timed!</h2>
+    <h2>The aim of this game is to reach the target number on the right, from the numbers listed below. But be careful, you're being timed!</h2>
+    <button class="start">Play!</button>
   </header>
   <div class="grid">
     <aside class="left">
@@ -31,14 +30,14 @@
         <h2>ATTEMPT</h2>
         <p><span class="attempt-num1"></span><span class="attempt-op"></span><span class="attempt-num2"></span><span class="playerSolution"></span></p>
       </div>
-      <div class="total_score">
+      <div class="total_score animated">
         <h2>TOTAL SCORE</h2>
         <p><span class="total">0</span></p>
       </div>
     </aside>
     <ul>
-      <li class="operator" id="op-1" value="+">+</li>
-      <li class="operator" id="op-2" value="-">-</li>
+      <li class="operator animated" id="op-1" value="+">+</li>
+      <li class="operator animated" id="op-2" value="-">-</li>
       <br>
       <button type="button" name="button" class="eq">=</button>
       <br>
@@ -53,7 +52,7 @@
       <li class="number" id="id-8" value=""></li>
     </ul>
     <aside class="right">
-      <div class="time">
+      <div class="time animated">
         <h2>TIMER</h2>
         <p class = "value">20</p>
         <br>

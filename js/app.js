@@ -24,15 +24,18 @@ Game.init = function () {
   Game.countdown       = 21;
   Game.lev             = 1;
   Game.total           = $('.total');
+  Game.start           = $('.start');
 
   // Start off by resetting the game
-  Game.reset();
-
-  Game.clock = setInterval(Game.timer, 1000);
-
   // Setup eventListeners
   Game.$eq.on('click', Game.playerSolution);
   Game.$list.on('click', Game.playerEquation);
+  Game.start.on('click', Game.startGame);
+};
+
+Game.startGame = function() {
+  Game.reset();
+  Game.clock = setInterval(Game.timer, 1000);
 };
 
 // Reset all the conditions
@@ -114,12 +117,14 @@ Game.timer = function(){
 
 Game.timerDone = function(){
   console.log('done');
+  Game.animation('.time', 'shake');
   Game.levelUp();
   Game.score = 0;
   Game.reset();
 };
 
 Game.levelUp = function(){
+  Game.animation('.total_score', 'flash');
   Game.totalScore = Game.totalScore + Game.score;
   Game.total.html(Game.totalScore);
   Game.score = 0;
@@ -147,6 +152,7 @@ Game.playerEquation = function(){
   } else {
     Game.operator = $(this).text();
     Game.$attemptop.html(' '+Game.operator+' ');
+    Game.animation('.operator', 'pulse');
   }
 };
 
@@ -167,7 +173,7 @@ Game.match = function(){
     Game.animation('.scoreboard_score', 'tada');
     // Game.score();
   } else {
-    Game.score--;
+    Game.init();
   }
   Game.reset();
 };
