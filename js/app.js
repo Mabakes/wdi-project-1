@@ -20,13 +20,14 @@ Game.init = function () {
   Game.level           = $('.level');
   Game.count           = 0;
   Game.score           = 0;
+  Game.totalScore      = 0;
   Game.countdown       = 20;
   Game.lev             = 1;
+  Game.total           = $('.total');
 
   // Start off by resetting the game
   Game.reset();
 
-//
   Game.clock = setInterval(Game.timer, 1000);
 
   // Setup eventListeners
@@ -49,8 +50,8 @@ Game.reset = function() {
   Game.$attemptop.text('');
   Game.$playerSolution.text('');
   Game.$answer.text('');
-  Game.score           = 0;
-  Game.countdown       = 10;
+  // Game.score           = 0;
+  // Game.countdown       = 20;
 
   // Run again...
   Game.generateNumbers();
@@ -95,11 +96,13 @@ Game.generateTargetNumber = function() {
   // Assigns it to the HTML
   Game.$answer.html(Game.answer);
 
-  // Game.clock = setInterval(Game.timer, 1000);
+  Game.timer();
 };
 
 // Count down timer
 Game.timer = function(){
+  console.log('timer');
+  // Game.countdown = 20;
   Game.countdown -= 1;
   if(Game.countdown === 0){
     clearInterval(Game.clock);
@@ -108,18 +111,20 @@ Game.timer = function(){
   Game.value.html(Game.countdown);
 };
 
-
 Game.timerDone = function(){
-  Game.reset();
-  Game.logScore = Game.scoreCount.text();
-  Game.box.html(Game.logScore);
-
+  console.log('done');
   Game.levelUp();
+  Game.score = 0;
+  Game.reset();
 };
 
 Game.levelUp = function(){
+  Game.totalScore = Game.totalScore + Game.score;
+  console.log(Game.totalScore);
+  Game.total.html(Game.totalScore);
   Game.lev++;
   Game.level.text(Game.lev);
+  Game.clock = setInterval(Game.timer, 1000);
 };
 
 Game.playerEquation = function(){
@@ -148,18 +153,13 @@ Game.playerSolution = function(){
 };
 
 Game.match = function(){
-  console.log('match');
   if (Game.completeSolution === Game.answer){
-    // clear Game.player1 and Game.player2
-    // alert('Well done!');
+    console.log('match');
     Game.score++;
     Game.scoreCount.html(Game.score);
-    console.log('Game.level');
     // Game.score();
   } else {
     Game.score--;
-    // alert('Naaaah!');
-    // Game.reset();
   }
   Game.reset();
 };
