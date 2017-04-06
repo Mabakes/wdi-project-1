@@ -1,8 +1,9 @@
 body {
   text-align: center;
-  background-color: grey;
-  font-family: 'Revalia', cursive;
-  color: black;
+  background-color: #fafafa;
+  /*font-family: 'Revalia', cursive;*/
+  font-family: 'Montserrat', sans-serif;
+  color: #333;
 }
 
 header{
@@ -25,7 +26,9 @@ h1 {
 }
 
 p {
-  font-size: 30px;
+  margin-top: 10px;
+  font-size: 40px;
+  font-weight: 800;
 }
 
 .grid {
@@ -41,15 +44,18 @@ ul {
 }
 
 .number, .operator, .eq{
-  border: 2px solid black;
+  color: #777;
+  border: 2px solid #fff;
   display: inline-block;
   border-radius: 10px;
   font-size: 30px;
-  background: white;
-  background: -webkit-radial-gradient(white, grey, black);
-  background: -o-radial-gradient(white, grey, black);
-  background: -moz-radial-gradient(white, grey, black);
-  background: radial-gradient(white, grey, black);
+  background: #f2f2f2;
+  font-weight: 800;
+  cursor: pointer;
+  /*background: -webkit-radial-gradient(white, grey, black);*/
+  /*background: -o-radial-gradient(white, grey, black);*/
+  /*background: -moz-radial-gradient(white, grey, black);*/
+  /*background: radial-gradient(white, grey, black);*/
 }
 
 .number{
@@ -75,9 +81,10 @@ ul {
 }
 
 .eq:hover, .eq:active, .number:hover, .number:active, .operator:hover, .operator:active{
- color: white;
- background: black;
- curser: hand;
+ /*color: white;*/
+ /*background: black;*/
+ background: #f5f5f5;
+ cursor: pointer;
 }
 
 .right{
@@ -91,9 +98,16 @@ ul {
 .scoreboard_level, .scoreboard_score, .time, .target, .attempt, .total_score{
   height: 168px;
   width: 200px;
-  border: 2px solid black;
+  border: 2px solid #f2f2f2;
   margin-top: 5px;
   border-radius: 10px;
-  background: black;
   color: white;
+  opacity: .8;
 }
+
+.time             { background: #378B2E; }
+.target           { background: #AA3939; }
+.attempt          { background: #D1721E; }
+.total_score      { background: #69198B; }
+.scoreboard_level { background: #D1C71E; }
+.scoreboard_score { background: #1A5C86; }

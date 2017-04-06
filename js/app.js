@@ -95,6 +95,7 @@ Game.generateTargetNumber = function() {
   Game.answer = eval(`${Game.chosenNum1} ${Game.chosenOp} ${Game.chosenNum2}`);
   // Assigns it to the HTML
   Game.$answer.html(Game.answer);
+  Game.animation('.target', 'flash');
 
   Game.timer();
 };
@@ -124,18 +125,23 @@ Game.levelUp = function(){
   Game.score = 0;
   Game.scoreCount.html(Game.score);
   Game.lev++;
+  Game.animation('.scoreboard_level', 'bounce');
   Game.level.text(Game.lev);
   Game.clock = setInterval(Game.timer, 1000);
 };
 
 Game.playerEquation = function(){
-  console.log('playerEquation');
+  // No first number and hitting operator
+  if (!Game.player1 && $(this).text().match(/[\/\+\-\*]/)) return;
+  // First number set and hitting another number
+  if (Game.player1 && $(this).text().match(/\d/) && !Game.operator) return;
+
   if ($(this).hasClass('number')) {
     if (Game.player1){
       Game.player2 = $(this).text();
       Game.$attempt2.html(' '+Game.player2+' =');
     } else{
-      Game.player1=$(this).text();
+      Game.player1 = $(this).text();
       Game.$attempt1.html(Game.player1+ ' ');
     }
   } else {
@@ -158,11 +164,16 @@ Game.match = function(){
     console.log('match');
     Game.score++;
     Game.scoreCount.html(Game.score);
+    Game.animation('.scoreboard_score', 'tada');
     // Game.score();
   } else {
     Game.score--;
   }
   Game.reset();
+};
+
+Game.animation = function(element, animation) {
+  $(element).addClass(animation).one('webkitAnimationEnd', () => $(element).removeClass(animation));
 };
 
 $(Game.init.bind(Game));
