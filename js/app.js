@@ -21,7 +21,7 @@ Game.init = function () {
   Game.count           = 0;
   Game.score           = 0;
   Game.totalScore      = 0;
-  Game.countdown       = 20;
+  Game.countdown       = 21;
   Game.lev             = 1;
   Game.total           = $('.total');
 
@@ -102,9 +102,9 @@ Game.generateTargetNumber = function() {
 // Count down timer
 Game.timer = function(){
   console.log('timer');
-  // Game.countdown = 20;
   Game.countdown -= 1;
   if(Game.countdown === 0){
+    Game.countdown = 21;
     clearInterval(Game.clock);
     Game.timerDone();
   }
@@ -120,8 +120,9 @@ Game.timerDone = function(){
 
 Game.levelUp = function(){
   Game.totalScore = Game.totalScore + Game.score;
-  console.log(Game.totalScore);
   Game.total.html(Game.totalScore);
+  Game.score = 0;
+  Game.scoreCount.html(Game.score);
   Game.lev++;
   Game.level.text(Game.lev);
   Game.clock = setInterval(Game.timer, 1000);
