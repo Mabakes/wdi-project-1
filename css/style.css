@@ -1,21 +1,30 @@
 body {
   text-align: center;
-  background-color: black;
-  font-family: 'Macondo', cursive;
-  color: white;
+  background-color: grey;
+  font-family: 'Revalia', cursive;
+  color: black;
 }
 
-h1 {
-  font-size: 40px;
+header{
+  width: 940px;
+  display: inline-block;
+  border: 2px solid black;
+  margin: 5px;
+  border-radius: 10px;
+  background: black;
+  color: grey;
 }
+/*h1 {
+  font-size: 40px;
+}*/
 
 p {
   font-size: 30px;
 }
 
 .grid {
-  width: 1500px;
-  height: 1000px;
+  width: 950px;
+  height: 500px;
   margin: 0 auto;
   text-align: center;
 }
@@ -25,91 +34,61 @@ ul {
   display: inline-block;;
 }
 
-.number {
+.number, .operator, .eq{
+  border: 2px solid black;
+  margin: 5px;
+  display: inline-block;
+  border-radius: 10px;
+  font-size: 30px;
+  background: white;
+  background: -webkit-radial-gradient(white, grey, black);
+  background: -o-radial-gradient(white, grey, black);
+  background: -moz-radial-gradient(white, grey, black);
+  background: radial-gradient(white, grey, black);
+}
+
+.number{
   height: 100px;
   width: 100px;
-  border: 2px solid #660066;
-  margin: 5px;
-  display: inline-block;
-  border-radius: 50px;
   line-height: 100px;
-  font-size: 30px;
-  background: #660066; /* For browsers that do not support gradients */
-  background: -webkit-radial-gradient(#660066, #cc5200, black); /* Safari 5.1 to 6.0 */
-  background: -o-radial-gradient(#660066, #cc5200, black); /* For Opera 11.6 to 12.0 */
-  background: -moz-radial-gradient(#660066, #cc5200, black); /* For Firefox 3.6 to 15 */
-  background: radial-gradient(#660066, #cc5200, black); /* Standard syntax */
 }
-
 .operator {
-  height: 200px;
-  width: 200px;
-  border: 2px solid #660066;
-  display: inline-block;
-  margin: 5px;
-  border-radius: 100px;
+  height: 220px;
+  width: 220px;
   line-height: 200px;
   font-size: 100px;
-
-  background: #660066; /* For browsers that do not support gradients */
-  background: -webkit-radial-gradient(#660066, #cc5200, black); /* Safari 5.1 to 6.0 */
-  background: -o-radial-gradient(#660066, #cc5200, black); /* For Opera 11.6 to 12.0 */
-  background: -moz-radial-gradient(#660066, #cc5200, black); /* For Firefox 3.6 to 15 */
-  background: radial-gradient(#660066, #cc5200, black); /* Standard syntax */
 }
-
 .eq{
- display: inline-block;
- border:3px solid #DB9914;
- color: #2B2403;
- border-radius: 22px 3px 22px 3px;
- -webkit-border-radius: 22px 3px 22px 3px;
- -moz-border-radius: 22px 3px 22px 3px;
- font-family: Verdana;
- width: auto;
+ width: 460px;
  height: auto;
  font-size: 42px;
  padding: 10px 40px;
- box-shadow: inset 0 1px 0 0 #FFF6CE,inset 0 -1px 0 0 #E3C852,inset 0 0 0 1px #FCE88D,0 2px 4px 0 #D4D4D4;
- -moz-box-shadow: inset 0 1px 0 0 #FFF6CE,inset 0 -1px 0 0 #E3C852,inset 0 0 0 1px #FCE88D,0 2px 4px 0 #D4D4D4;
- -webkit-box-shadow: inset 0 1px 0 0 #FFF6CE,inset 0 -1px 0 0 #E3C852,inset 0 0 0 1px #FCE88D,0 2px 4px 0 #D4D4D4;
- background-image: linear-gradient(to top, #CC5200, #FCDF5B);
- background-color: #FCDF5B;
-}
-.eq:hover, .eq:active{
- border:3px solid #660066;
- color: #660066;
- background-image: linear-gradient(to top, #CC5200, #660066);
- background-color: #660066;
 }
 
-.scoreboard{
-  height: 400px;
-  width: 200px;
+.eq:hover, .eq:active, .number:hover, .number:active, .operator:hover, .operator:active{
+ color: white;
+ background: black;
+}
+
+.right{
   float: right;
-  background-color: #FFF6CE;
-  color: black;
-  border: 4px solid #660066;
 }
 
-.time{
-  height: 200px;
-  width: 200px;
+.left{
   float: left;
-  background-color: #FFF6CE;
-  color: black;
-  border: 4px solid #660066;
 }
 
-.scoreboard h1{
-  font-size: 30px;
+.scoreboard_level, .scoreboard_score, .time, .target, .attempt, .blah{
+  height: 168px;
+  width: 200px;
+  border: 2px solid black;
+  margin: 5px;
+  border-radius: 10px;
+  background: black;
+  color: white;
 }
 
-.scoreboard p{
-  font-size: 60px;
-}
-
-.total_score {
+/*.total_score {
   height: 300px;
   width: 1500px;
   clear: both;
@@ -118,11 +97,4 @@ ul {
   border: 4px solid #660066;
   margin: 50px;
   text-align: center;
-}
-
-.level_box {
-  height: 200px;
-  width: 200px;
-  float: left;
-  text-align: center;
-}
+}*/

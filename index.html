@@ -5,80 +5,100 @@
   <title>WDI Project 1</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/animate.css">
-  <link href="https://fonts.googleapis.com/css?family=Macondo" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Revalia" rel="stylesheet">
   <script
   src="https://code.jquery.com/jquery-3.2.1.js"
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
   crossorigin="anonymous"></script>
   <script src="js/app.js"></script>
 </head>
-<body>
-  <h1>Maths Game</h1>
-  <p>The number to generate is:</p>
-  <p class="answer"></p>
-  <p>Your attempt is:</p>
-  <p><span class="attempt-num1"></span><span class="attempt-op"></span><span class="attempt-num2"></span><span class="playerSolution"></span></p>
-  <div class="grid">
-    <ul>
-      <li class="operator" id="op-1" value="+">+</li>
-      <button type="button" name="button" class="eq">=</button>
-      <li class="operator" id="op-2" value="-">-</li>
-      <br>
-      <li class="number" id="id-1" value=""></li>
-      <li class="number" id="id-2" value=""></li>
-      <li class="number" id="id-3" value=""></li>
-      <li class="number" id="id-4" value=""></li>
-      <br>
-      <li class="number" id="id-5" value=""></li>
-      <li class="number" id="id-6" value=""></li>
-      <li class="number" id="id-7" value=""></li>
-      <li class="number" id="id-8" value=""></li>
-    </ul>
 
-    <div class="time">
-      <h1>TIME LEFT</h1>
-      <p class = "value"></p>
+<body>
+  <header>
+    <h1>BACKWARDS CALCULATOR</h1>
+    <h2>The aim of this game is to reach the target number on the right, from the numbers listed below.</h2>
       <br>
-    </div>
-    <div class="scoreboard">
-      <h1>LEVEL</h1>
-      <p class = "level">1</p>
-      <h1>SCORE</h1>
-      <p class = "score">test</p>
-    </div>
-    <div class="total_score">
+      <h3>But be careful, you're being timed!</h3>
+    </header>
+    <div class="grid">
+      <aside class="left">
+        <div class="target">
+          <h2>TARGET</h2>
+          <p class="answer"></p>
+        </div>
+        <div class="attempt">
+          <h2>ATTEMPT</h2>
+          <p><span class="attempt-num1"></span><span class="attempt-op"></span><span class="attempt-num2"></span><span class="playerSolution"></span></p>
+        </div>
+        <div class="blah">
+        </div>
+      </aside>
+
+      <ul>
+        <li class="operator" id="op-1" value="+">+</li>
+        <li class="operator" id="op-2" value="-">-</li>
+        <br>
+        <button type="button" name="button" class="eq">=</button>
+        <br>
+        <li class="number" id="id-1" value=""></li>
+        <li class="number" id="id-2" value=""></li>
+        <li class="number" id="id-3" value=""></li>
+        <li class="number" id="id-4" value=""></li>
+        <br>
+        <li class="number" id="id-5" value=""></li>
+        <li class="number" id="id-6" value=""></li>
+        <li class="number" id="id-7" value=""></li>
+        <li class="number" id="id-8" value=""></li>
+      </ul>
+      <aside class="right">
+        <div class="time">
+          <h2>TIMER</h2>
+          <p class = "value"></p>
+          <br>
+        </div>
+        <div class="scoreboard_level">
+          <h2>LEVEL</h2>
+          <p class = "level">1</p>
+        </div>
+        <div class="scoreboard_score">
+          <h2>SCORE</h2>
+          <p class = "score"></p>
+        </div>
+      </aside>
+
+      <!-- <div class="total_score">
       <div class="level_title">
-        <h1>YOUR SCORES</h1>
-      </div>
-      <div class="level_box">
-        <p class = "level_box_score">LEVEL 1</p>
-        <p class = "score_box_score"></p>
-      </div>
-      <div class="level_box">
-        <p class = "level_box_score">LEVEL 2</p>
-        <p class = "score_box_score"></p>
-      </div>
-      <div class="level_box">
-        <p class = "level_box_score">LEVEL 3</p>
-        <p class = "score_box_score"></p>
-      </div>
-      <div class="level_box">
-        <p class = "level_box_score">LEVEL 4</p>
-        <p class = "score_box_score"></p>
-      </div>
-      <div class="level_box">
-        <p class = "level_box_score">LEVEL 5</p>
-        <p class = "score_box_score"></p>
-      </div>
-      <div class="level_box">
-        <p class = "level_box_score">LEVEL 6</p>
-        <p class = "score_box_score"></p>
-      </div>
-      <div class="level_box">
-        <p class = "level_box_score">LEVEL 7</p>
-        <p class = "score_box_score"></p>
-      </div>
+      <h1>YOUR SCORES</h1>
     </div>
+    <div class="level_box">
+    <p class = "level_box_score">LEVEL 1</p>
+    <p class = "score_box_score"></p>
   </div>
+  <div class="level_box">
+  <p class = "level_box_score">LEVEL 2</p>
+  <p class = "score_box_score"></p>
+</div>
+<div class="level_box">
+<p class = "level_box_score">LEVEL 3</p>
+<p class = "score_box_score"></p>
+</div>
+<div class="level_box">
+<p class = "level_box_score">LEVEL 4</p>
+<p class = "score_box_score"></p>
+</div>
+<div class="level_box">
+<p class = "level_box_score">LEVEL 5</p>
+<p class = "score_box_score"></p>
+</div>
+<div class="level_box">
+<p class = "level_box_score">LEVEL 6</p>
+<p class = "score_box_score"></p>
+</div>
+<div class="level_box">
+<p class = "level_box_score">LEVEL 7</p>
+<p class = "score_box_score"></p>
+</div> -->
+<!-- </div> -->
+</div>
 </body>
 </html>

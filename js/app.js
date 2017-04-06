@@ -20,7 +20,7 @@ Game.init = function () {
   Game.level           = $('.level');
   Game.count           = 0;
   Game.score           = 0;
-  Game.countdown       = 10;
+  Game.countdown       = 20;
   Game.lev             = 1;
 
   // Start off by resetting the game
@@ -157,7 +157,8 @@ Game.match = function(){
     console.log('Game.level');
     // Game.score();
   } else {
-    alert('Naaaah!');
+    Game.score--;
+    // alert('Naaaah!');
     // Game.reset();
   }
   Game.reset();
